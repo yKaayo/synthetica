@@ -1,12 +1,21 @@
+import ModelViewer from "../components/ModelViewer";
+import { handleCreatePost } from "../lib/api";
+import { useGLTF } from "@react-three/drei";
+
+// Model 3D
+import brainHologram from "../assets/3d/brain_hologram.glb";
+
 const CreatePost = () => {
-  const handleFormCreatePost = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
+  const { nodes, scene } = useGLTF(brainHologram);
+
+  const handleFormCreatePost = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
-    
-    // handleCreatePost(data);
+
+    handleCreatePost(data);
   };
+
   return (
     <section className="relative container mx-auto flex flex-col items-center px-5 py-5 md:px-0 md:py-10">
       <p className="paragraph mb-5">Em poucos passos</p>
@@ -23,12 +32,15 @@ const CreatePost = () => {
       </p>
 
       {/* Form */}
-      <div className="mt-20 grid w-full grid-cols-1 justify-center md:mt-40 md:grid-cols-2">
-        <div className=""></div>
+      <div className="mt-20 grid w-full grid-cols-1 items-start justify-center md:mt-40 md:grid-cols-2">
+        <div className="relative flex justify-center items-center">
+          <ModelViewer scene={scene} nodes={nodes} />
+        </div>
 
         <form
           onSubmit={handleFormCreatePost}
           className="flex flex-col items-start"
+          id="formPost"
         >
           {/* Title */}
           <div className="relative flex w-full flex-col pb-20">
@@ -78,7 +90,7 @@ const CreatePost = () => {
 
           {/* Author */}
           <div className="relative flex w-full flex-col pb-20">
-          <div className="line"></div>
+            <div className="line"></div>
             <div className="circle"></div>
 
             <div className="flex flex-col items-start ps-8">
@@ -92,9 +104,51 @@ const CreatePost = () => {
                   id="author"
                   name="author"
                   className="input"
-                  placeholder="Digite o author"
+                  placeholder="Digite o autor(a)"
                   required
                 />
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="relative flex w-full flex-col pb-20">
+            <div className="line"></div>
+            <div className="circle"></div>
+
+            <div className="flex flex-col items-start ps-8">
+              <p className="dark:text-white">Passo 4</p>
+              <div className="flex w-full flex-col">
+                <label htmlFor="content" className="subtitle mb-1">
+                  Conteúdo
+                </label>
+                <textarea
+                  id="content"
+                  name="content"
+                  className="input"
+                  placeholder="Digite o conteúdo"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Category */}
+          <div className="relative flex w-full flex-col pb-20">
+            <div className="line"></div>
+            <div className="circle"></div>
+
+            <div className="flex flex-col items-start ps-8">
+              <p className="dark:text-white">Passo 5</p>
+              <div className="flex w-full flex-col">
+                <label htmlFor="category" className="subtitle mb-1">
+                  Conteúdo
+                </label>
+                <select name="category" id="category" className="input" required>
+                  <option defaultValue={true} className="text-black">Selecione uma opção</option>
+                  <option value="0" className="text-black">Avanços Tecnológicos</option>
+                  <option value="1" className="text-black">IA na Arte e Cultura</option>
+                </select>
               </div>
             </div>
           </div>
@@ -104,8 +158,10 @@ const CreatePost = () => {
             <div className="circle"></div>
 
             <div className="flex flex-col items-start ps-8">
-              <p className="dark:text-white">Passo 4</p>
-              <p className="subtitle mb-5">Preparado para mandar o seu conhecimento para o futuro?</p>
+              <p className="dark:text-white">Passo 6</p>
+              <p className="subtitle mb-5">
+                Preparado para mandar o seu conhecimento para o futuro?
+              </p>
               <button className="btn">Enviar</button>
             </div>
           </div>

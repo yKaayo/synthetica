@@ -21,11 +21,11 @@
 }
 
 .title {
-  @apply font-headline text-3xl font-semibold text-primary md:text-6xl;
+  @apply font-headline text-primary text-3xl font-semibold text-balance md:text-6xl;
 }
 
 .subtitle {
-  @apply font-headline text-lg font-medium text-black/75 md:text-3xl dark:text-gray-200;
+  @apply font-headline text-lg font-medium text-balance text-black/75 md:text-3xl dark:text-gray-200;
 }
 
 .paragraph {
@@ -45,5 +45,13 @@
 }
 
 .btn {
-  @apply bg-primary border-primary cursor-pointer rounded-md border-2 px-5 py-2 font-bold text-white duration-500 hover:text-primary hover:bg-transparent;
+  @apply bg-primary border-primary hover:text-primary cursor-pointer rounded-md border-2 px-5 py-2 font-bold text-black duration-300 hover:bg-transparent;
+}
+
+#model {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.8) 15%,
+    rgba(0, 0, 0, 0) 70%
+  );
 }
