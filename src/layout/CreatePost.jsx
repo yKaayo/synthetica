@@ -1,23 +1,44 @@
 import ModelViewer from "../components/ModelViewer";
 import { handleCreatePost } from "../lib/api";
 import { useGLTF } from "@react-three/drei";
+import { useState } from "react";
 
 // Model 3D
 import brainHologram from "../assets/3d/brain_hologram.glb";
 
-const CreatePost = () => {
-  const { nodes, scene } = useGLTF(brainHologram);
+// Components
+import Modal from "../components/Modal";
+import Dropzone from "../components/Dropzone";
 
-  const handleFormCreatePost = (e) => {
+const CreatePost = () => {
+  const { scene } = useGLTF(brainHologram);
+
+  const [messageModal, setMessageModal] = useState("");
+  const [modal, setModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleUpload = (file) => {
+    setSelectedImage(file); // Armazena a imagem selecionada
+  };
+
+  const handleFormCreatePost = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
 
-    handleCreatePost(data);
+    if (selectedImage) {
+      formData.append("image", selectedImage);
+    }
+
+    const res = await handleCreatePost(formData); // Envia o FormData diretamente
+
+    setMessageModal(res.message);
+    setModal(true);
+    e.target.reset();
+    setSelectedImage(null); // Limpa a imagem selecionada
   };
 
   return (
-    <section className="relative container mx-auto flex flex-col items-center px-5 py-5 md:px-0 md:py-10">
+    <section className="section">
       <p className="paragraph mb-5">Em poucos passos</p>
 
       <h3 className="title text-center dark:text-white">
@@ -33,8 +54,8 @@ const CreatePost = () => {
 
       {/* Form */}
       <div className="mt-20 grid w-full grid-cols-1 items-start justify-center md:mt-40 md:grid-cols-2">
-        <div className="relative flex justify-center items-center">
-          <ModelViewer scene={scene} nodes={nodes} />
+        <div className="relative flex items-center justify-center">
+          <ModelViewer scene={scene} />
         </div>
 
         <form
@@ -142,13 +163,40 @@ const CreatePost = () => {
               <p className="dark:text-white">Passo 5</p>
               <div className="flex w-full flex-col">
                 <label htmlFor="category" className="subtitle mb-1">
-                  Conteúdo
+                  Categoria
                 </label>
-                <select name="category" id="category" className="input" required>
-                  <option defaultValue={true} className="text-black">Selecione uma opção</option>
-                  <option value="0" className="text-black">Avanços Tecnológicos</option>
-                  <option value="1" className="text-black">IA na Arte e Cultura</option>
+                <select
+                  name="category"
+                  id="category"
+                  className="input"
+                  required
+                  defaultValue=""
+                >
+                  <option value="" disabled className="text-black">
+                    Selecione uma opção
+                  </option>
+                  <option value="0" className="text-black">
+                    Avanços Tecnológicos
+                  </option>
+                  <option value="1" className="text-black">
+                    IA na Arte e Cultura
+                  </option>
                 </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Dropzone */}
+          <div className="relative flex w-full flex-col pb-20">
+            <div className="line"></div>
+            <div className="circle"></div>
+
+            <div className="flex flex-col items-start ps-8">
+              <p className="dark:text-white">Passo 6</p>
+              <div className="flex w-full flex-col">
+                <label className="subtitle mb-1">Imagem</label>
+
+                <Dropzone onFileUpload={handleUpload} />
               </div>
             </div>
           </div>
@@ -158,7 +206,7 @@ const CreatePost = () => {
             <div className="circle"></div>
 
             <div className="flex flex-col items-start ps-8">
-              <p className="dark:text-white">Passo 6</p>
+              <p className="dark:text-white">Passo 7</p>
               <p className="subtitle mb-5">
                 Preparado para mandar o seu conhecimento para o futuro?
               </p>
@@ -167,6 +215,10 @@ const CreatePost = () => {
           </div>
         </form>
       </div>
+
+      {modal && (
+        <Modal isOpen={modal} message={messageModal} setModal={setModal} />
+      )}
     </section>
   );
 };

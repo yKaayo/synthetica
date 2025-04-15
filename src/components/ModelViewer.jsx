@@ -42,7 +42,7 @@ const ModelViewer = ({ scene }) => {
         position: "fixed",
         scrollTrigger: {
           trigger: "#formPost",
-          start: "top 35%",
+          start: "top 30%",
           end: "bottom center",
           scrub: true,
         },
@@ -54,7 +54,10 @@ const ModelViewer = ({ scene }) => {
   }, [isModelReady]);
 
   return (
-    <div id="model" className="absolute top-[30%] h-[300px] bg-black/80 dark:bg-transparent" ref={modelDivRef}>
+    <div
+      className={`absolute top-[30%] h-[300px] bg-radial dark:bg-none ${window.innerWidth < 768 ? "from-black/40 to-transparent to-70% opacity-40" : "from-black/70 to-transparent to-70% opacity-100"}`}
+      ref={modelDivRef}
+    >
       <Canvas camera={{ position: [1, 1, 1], fov: 50 }}>
         <ambientLight intensity={1} />
         <spotLight position={[10, 10, 10]} penumbra={1} />
@@ -62,7 +65,6 @@ const ModelViewer = ({ scene }) => {
           <primitive
             ref={modelRef}
             object={scene}
-            
             onUpdate={(self) => {
               if (self && !isModelReady) {
                 setIsModelReady(true);

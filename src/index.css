@@ -20,6 +20,10 @@
   --color-primary: #53eafd;
 }
 
+.section {
+  @apply relative container mx-auto flex flex-col items-center px-5 py-5 md:px-0 md:py-10;
+}
+
 .title {
   @apply font-headline text-primary text-3xl font-semibold text-balance md:text-6xl;
 }
@@ -46,12 +50,4 @@
 
 .btn {
   @apply bg-primary border-primary hover:text-primary cursor-pointer rounded-md border-2 px-5 py-2 font-bold text-black duration-300 hover:bg-transparent;
-}
-
-#model {
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.8) 15%,
-    rgba(0, 0, 0, 0) 70%
-  );
 }
