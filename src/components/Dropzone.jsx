@@ -36,11 +36,10 @@ const Dropzone = ({ onFileUpload }) => {
   };
 
   const handleFile = (file) => {
-    // Cria preview da imagem
     const reader = new FileReader();
     reader.onload = () => {
       setPreview(reader.result);
-      onFileUpload(file); // Passa o arquivo para o componente pai
+      onFileUpload(file);
     };
     reader.readAsDataURL(file);
   };
@@ -50,7 +49,7 @@ const Dropzone = ({ onFileUpload }) => {
       className={`rounded-md border-2 border-dashed p-5 text-center transition-colors ${
         isDragging
           ? "border-blue-500 bg-blue-50"
-          : "border-white hover:border-gray-400"
+          : "border-gray-400 dark:border-white hover:border-gray-400"
       }`}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
@@ -74,7 +73,7 @@ const Dropzone = ({ onFileUpload }) => {
           />
         </div>
       ) : (
-        <p className="mb-3 text-sm text-white">
+        <p className="mb-3 text-sm text-black dark:text-white">
           {isDragging ? (
             "Solte a imagem aqui"
           ) : (

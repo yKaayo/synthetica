@@ -13,12 +13,12 @@ import Dropzone from "../components/Dropzone";
 const CreatePost = () => {
   const { scene } = useGLTF(brainHologram);
 
-  const [messageModal, setMessageModal] = useState("");
+  const [content, setContent] = useState("");
   const [modal, setModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleUpload = (file) => {
-    setSelectedImage(file); // Armazena a imagem selecionada
+    setSelectedImage(file);
   };
 
   const handleFormCreatePost = async (e) => {
@@ -29,12 +29,18 @@ const CreatePost = () => {
       formData.append("image", selectedImage);
     }
 
-    const res = await handleCreatePost(formData); // Envia o FormData diretamente
+    const res = await handleCreatePost(formData);
 
-    setMessageModal(res.message);
+    // Modal
+    const contentModal = (
+      <h3 className="text-center text-2xl font-bold text-balance">
+        {res.message}
+      </h3>
+    );
+    setContent(contentModal);
     setModal(true);
     e.target.reset();
-    setSelectedImage(null); // Limpa a imagem selecionada
+    setSelectedImage(null);
   };
 
   return (
@@ -175,10 +181,10 @@ const CreatePost = () => {
                   <option value="" disabled className="text-black">
                     Selecione uma opção
                   </option>
-                  <option value="0" className="text-black">
+                  <option value="Avanços Tecnológicos" className="text-black">
                     Avanços Tecnológicos
                   </option>
-                  <option value="1" className="text-black">
+                  <option value="IA na Arte e Cultura" className="text-black">
                     IA na Arte e Cultura
                   </option>
                 </select>
@@ -216,9 +222,7 @@ const CreatePost = () => {
         </form>
       </div>
 
-      {modal && (
-        <Modal isOpen={modal} message={messageModal} setModal={setModal} />
-      )}
+      {modal && <Modal isOpen={modal} content={content} setModal={setModal} />}
     </section>
   );
 };

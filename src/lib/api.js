@@ -3,8 +3,7 @@ export async function handleCreatePost(formData) {
   try {
     const res = await fetch("http://127.0.0.1:8000/post", {
       method: "POST",
-      body: formData, // Não usa JSON.stringify!
-      // Não defina Content-Type manualmente - o navegador fará isso automaticamente
+      body: formData,
     });
 
     if (!res.ok) {
@@ -16,7 +15,7 @@ export async function handleCreatePost(formData) {
     return await res.json();
   } catch (err) {
     console.error("Erro na requisição:", err);
-    throw err; // Propaga o erro para ser tratado no componente
+    throw err;
   }
 }
 

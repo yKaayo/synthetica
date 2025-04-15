@@ -21,7 +21,7 @@
 }
 
 .section {
-  @apply relative container mx-auto flex flex-col items-center px-5 py-5 md:px-0 md:py-10;
+  @apply min-h-screen relative container mx-auto flex flex-col items-center px-5 py-5 md:px-0 md:py-10;
 }
 
 .title {
