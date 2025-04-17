@@ -26,6 +26,21 @@ export async function handleGetPosts() {
 }
 
 // Update a Post
+export async function handleUpdatePost(id, formData) {
+  const res = await fetch(`http://127.0.0.1:8000/post/${id}`, {
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+  });
+
+  if (!res.ok) {
+    throw new Error('Erro ao atualizar post');
+  }
+
+  return await res.json();
+}
 
 // Delete a Post
 export async function handleDeletePost(id) {
@@ -37,5 +52,5 @@ export async function handleDeletePost(id) {
     throw new Error(`Erro na requisição: ${res}`);
   }
 
-  return console.log(res.json());
+  return res.json();
 }

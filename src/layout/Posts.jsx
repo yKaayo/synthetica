@@ -4,10 +4,12 @@ import { handleGetPosts, handleDeletePost } from "../lib/api";
 // Components
 import TiltedCard from "../components/TiltedCard";
 import Modal from "../components/Modal";
+import BlurFade from "../components/BlurFade";
 
 // Icon
 import editIcon from "../assets/icons/edit.svg";
 import trashIcon from "../assets/icons/trash.svg";
+import EditPostModal from "../components/EditPostModal";
 
 const Posts = () => {
   // Posts
@@ -16,9 +18,6 @@ const Posts = () => {
   // Modal
   const [modal, setModal] = useState(false);
   const [content, setContent] = useState("");
-
-  // Edit
-  const [isEditing, setIsEditing] = useState(false);
 
   async function fetchPosts() {
     const postsData = await handleGetPosts();
@@ -30,15 +29,32 @@ const Posts = () => {
   }, []);
 
   function handleEdit(post) {
-    setIsEditing((prevActivate) => !prevActivate);
+    setContent(
+      <EditPostModal
+        post={post}
+        onSave={() => setModal(false)}
+        showPostEdited={() => fetchPosts()}
+      />,
+    );
+
+    setModal(true);
   }
 
   function handleDelete(post) {
     async function handleDeleteConfirmed(id) {
-      await handleDeletePost(id);
+      const res = await handleDeletePost(id);
 
       setModal(false);
       fetchPosts();
+
+      // Showing to the user that the post was deleted
+      const contentModal = (
+        <h3 className="text-center text-2xl font-bold text-balance">
+          {res.message}
+        </h3>
+      );
+      setContent(contentModal);
+      setModal(true);
     }
 
     function handleCancelDelete() {
@@ -215,18 +231,24 @@ const Posts = () => {
 
   return (
     <section className="section">
-      <p className="paragraph mb-5">Em poucos passos</p>
+      <BlurFade duration={0.4} delay={0.4}>
+        <p className="paragraph mb-5">Em poucos passos</p>
+      </BlurFade>
 
-      <h3 className="title text-center dark:text-white">
-        TRAGA SEU
-        <br />
-        CONHECIMENTO PARA
-        <br />O FUTURO
-      </h3>
+      <BlurFade duration={0.4}>
+        <h3 className="title text-center dark:text-white">
+          TRAGA SEU
+          <br />
+          CONHECIMENTO PARA
+          <br />O FUTURO
+        </h3>
+      </BlurFade>
 
-      <p className="subtitle mt-3 text-center">
-        FAÇA PARTE DE UM MUNDO HIPERCONECTADO
-      </p>
+      <BlurFade duration={0.4} delay={0.4}>
+        <p className="subtitle mt-3 text-center">
+          FAÇA PARTE DE UM MUNDO HIPERCONECTADO
+        </p>
+      </BlurFade>
 
       <div className="mt-10 grid w-full grid-cols-1 justify-center gap-x-8 gap-y-5 px-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {posts.map((post) => (
