@@ -28,3 +28,14 @@ export async function handleGetPosts() {
 // Update a Post
 
 // Delete a Post
+export async function handleDeletePost(id) {
+  const res = await fetch(`http://127.0.0.1:8000/post/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Erro na requisição: ${res}`);
+  }
+
+  return console.log(res.json());
+}

@@ -97,7 +97,7 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <div className="absolute top-0 left-0 z-[1] h-full w-full rounded-[15px] bg-black/40 dark:bg-black/20"></div>
+        <div className="absolute top-0 left-0 z-[1] h-full w-full rounded-[15px] bg-black/40 dark:bg-black/30"></div>
         <motion.img
           src={imageSrc}
           alt={altText}

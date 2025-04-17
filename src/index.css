@@ -25,7 +25,7 @@
 }
 
 .title {
-  @apply font-headline text-primary text-3xl font-semibold text-balance md:text-6xl;
+  @apply font-headline text-primary text-3xl font-semibold break-words text-balance md:text-6xl;
 }
 
 .subtitle {
