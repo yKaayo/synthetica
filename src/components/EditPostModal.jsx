@@ -38,26 +38,26 @@ const EditPostModal = ({ post, onSave, showPostEdited }) => {
       />
 
       <div className="absolute top-0 left-0 z-[2] h-[120px] w-full rounded-t-md bg-black/50 md:h-[200px]">
-        <div className="absolute bottom-1 left-2 flex justify-start gap-2">
+        <div className="absolute bottom-1 left-2 flex gap-2">
           <input
             id="title"
             type="text"
             name="title"
             onChange={handleChange}
-            className="title max-w-fit focus-visible:outline-0"
+            className="title w-full focus-visible:outline-0"
             value={editedPost.title}
           />
-          {/* <label htmlFor="" className="">
+          <label htmlFor="" className="">
             <img
               src={pencilIcon}
               alt="Editar o título"
               className="bg-red-6 size-5"
             />
-          </label> */}
+          </label>
         </div>
       </div>
 
-      <div className="relative mt-[76px] min-h-[calc(90vh-208px)] w-full overflow-y-auto md:mt-[160px] md:min-h-[calc(90vh-288px)]">
+      <div className="relative mt-[76px] flex h-full min-h-[calc(90vh-208px)] w-full flex-col overflow-y-auto md:mt-[160px] md:min-h-[calc(90vh-288px)]">
         <div className="absolute top-2 right-1 flex items-center gap-2">
           <button
             onClick={() => {
@@ -77,12 +77,12 @@ const EditPostModal = ({ post, onSave, showPostEdited }) => {
           onChange={handleChange}
           type="text"
           name="description"
-          className="font-headline mt-2 text-lg font-medium text-balance break-words text-black/75 focus-visible:outline-0 md:text-3xl"
+          className="font-headline mt-2 w-full pe-12 text-lg font-medium text-balance break-words text-black/75 focus-visible:outline-0 md:text-3xl"
           value={editedPost.description}
         />
 
-        <input
-          className="text-start break-words text-black/75 focus-visible:outline-0 md:text-2xl"
+        <textarea
+          className="h-full w-full flex-1 resize-none text-start text-black/75 focus-visible:outline-0 md:text-2xl"
           name="content"
           onChange={handleChange}
           value={editedPost.content}

@@ -21,11 +21,11 @@
 }
 
 .section {
-  @apply min-h-screen relative container mx-auto flex flex-col items-center px-5 py-5 md:px-0 md:py-10;
+  @apply relative container mx-auto flex min-h-screen flex-col items-center justify-center px-5 py-5 md:py-10 lg:px-0;
 }
 
 .title {
-  @apply font-headline text-primary text-3xl font-semibold break-words text-balance md:text-6xl;
+  @apply font-headline text-primary text-3xl font-semibold text-balance break-words md:text-6xl;
 }
 
 .subtitle {

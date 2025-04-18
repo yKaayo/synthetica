@@ -4,12 +4,12 @@ import { handleGetPosts, handleDeletePost } from "../lib/api";
 // Components
 import TiltedCard from "../components/TiltedCard";
 import Modal from "../components/Modal";
-import BlurFade from "../components/BlurFade";
 
 // Icon
 import editIcon from "../assets/icons/edit.svg";
 import trashIcon from "../assets/icons/trash.svg";
 import EditPostModal from "../components/EditPostModal";
+import { BlurFade } from "../components/BlurFade";
 
 const Posts = () => {
   // Posts
@@ -179,7 +179,7 @@ const Posts = () => {
 
   function handleModal(post) {
     const contentModal = (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center overflow-y-auto">
         <img
           src={`http://127.0.0.1:8000${post.image_url}`}
           className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
@@ -190,7 +190,7 @@ const Posts = () => {
           <h3 className="title absolute bottom-1 left-2">{post.title}</h3>
         </div>
 
-        <div className="relative mt-[76px] min-h-[calc(90vh-208px)] w-full overflow-y-auto md:mt-[160px] md:min-h-[calc(90vh-288px)]">
+        <div className="relative mt-[76px] w-full flex-1 md:mt-[160px]">
           <div className="absolute top-2 right-1 flex items-center gap-2">
             <button
               onClick={() => handleEdit(post)}
@@ -215,7 +215,7 @@ const Posts = () => {
             </button>
           </div>
 
-          <p className="font-headline mt-2 text-lg font-medium text-balance break-words text-black/75 md:text-3xl">
+          <p className="font-headline my-2 text-lg font-medium text-balance break-words text-black/75 md:text-3xl">
             {post.description}
           </p>
           <p className="text-start break-words text-black/75 md:text-2xl">
@@ -231,26 +231,13 @@ const Posts = () => {
 
   return (
     <section className="section">
-      <BlurFade duration={0.4} delay={0.4}>
-        <p className="paragraph mb-5">Em poucos passos</p>
-      </BlurFade>
-
-      <BlurFade duration={0.4}>
-        <h3 className="title text-center dark:text-white">
-          TRAGA SEU
-          <br />
-          CONHECIMENTO PARA
-          <br />O FUTURO
-        </h3>
-      </BlurFade>
-
-      <BlurFade duration={0.4} delay={0.4}>
-        <p className="subtitle mt-3 text-center">
-          FAÇA PARTE DE UM MUNDO HIPERCONECTADO
-        </p>
-      </BlurFade>
-
-      <div className="mt-10 grid w-full grid-cols-1 justify-center gap-x-8 gap-y-5 px-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <BlurFade
+        delay={0.2}
+        duration={0.6}
+        className={
+          "mt-10 grid w-full grid-cols-1 justify-center gap-x-8 gap-y-5 px-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+        }
+      >
         {posts.map((post) => (
           <button
             key={post.id}
@@ -293,7 +280,7 @@ const Posts = () => {
             />
           </button>
         ))}
-      </div>
+      </BlurFade>
 
       {modal && <Modal isOpen={modal} content={content} setModal={setModal} />}
     </section>

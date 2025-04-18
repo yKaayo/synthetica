@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Background from "./layout/Background";
 import CreatePost from "./layout/CreatePost";
 import Posts from "./layout/Posts";
+import Hero from "./layout/Hero";
 
 const App = () => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const App = () => {
   return (
     <>
       <Background />
+      <Hero />
       <Posts />
       <CreatePost />
     </>

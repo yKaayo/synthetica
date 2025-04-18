@@ -44,7 +44,7 @@ const ModelViewer = ({ scene }) => {
           trigger: "#formPost",
           start: "top 30%",
           end: "bottom center",
-          scrub: true,
+          scrub: true
         },
         ease: "none",
       });

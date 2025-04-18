@@ -9,7 +9,7 @@ import brainHologram from "../assets/3d/brain_hologram.glb";
 // Components
 import Modal from "../components/Modal";
 import Dropzone from "../components/Dropzone";
-import BlurFade from "../components/BlurFade";
+import TextBlurFade from "../components/TextBlurFade";
 
 const CreatePost = () => {
   const { scene } = useGLTF(brainHologram);
@@ -46,24 +46,24 @@ const CreatePost = () => {
 
   return (
     <section className="section">
-      <BlurFade duration={0.4} delay={0.4}>
+      <TextBlurFade duration={0.4} delay={0.4}>
         <p className="paragraph mb-5">Em poucos passos</p>
-      </BlurFade>
+      </TextBlurFade>
 
-      <BlurFade duration={0.4}>
+      <TextBlurFade duration={0.4}>
         <h3 className="title text-center dark:text-white">
           TRAGA SEU
           <br />
           CONHECIMENTO PARA
           <br />O FUTURO
         </h3>
-      </BlurFade>
+      </TextBlurFade>
 
-      <BlurFade duration={0.4} delay={0.4}>
+      <TextBlurFade duration={0.4} delay={0.4}>
         <p className="subtitle mt-3 text-center">
           FAÇA PARTE DE UM MUNDO HIPERCONECTADO
         </p>
-      </BlurFade>
+      </TextBlurFade>
 
       {/* Form */}
       <div className="mt-20 grid w-full grid-cols-1 items-start justify-center md:mt-40 md:grid-cols-2">
