@@ -25,6 +25,17 @@ const PreLoader = () => {
     animate(counter1Ref.current, 2.5, 1);
     animate(counter2Ref.current, 3, 0);
 
+    gsap.to("body", {
+        overflowY: "hidden",
+        overflowX: "hidden",
+        duration: 4.2,
+    });
+
+    gsap.to("body", {
+        overflowY: "visible",
+        delay: 4.2,
+    });
+
     gsap.to(".digit", {
       top: "-150px",
       stagger: {
@@ -48,9 +59,9 @@ const PreLoader = () => {
   return (
     <section
       ref={loadingScreen}
-      className="loading-screen fixed top-0 left-0 z-50 flex h-full w-full cursor-none items-center justify-center bg-white dark:bg-black text-black dark:text-white font-headline"
+      className="loading-screen font-headline fixed top-0 left-0 z-50 flex h-full w-full cursor-none items-center justify-center bg-white text-black dark:bg-black dark:text-white"
     >
-      <div className="counter absolute flex h-[100px] text-[100px] leading-[102px] font-normal overflow-hidden">
+      <div className="counter absolute flex h-[100px] overflow-hidden text-[100px] leading-[102px] font-normal">
         <div className="num">2</div>
         <div className="num">0</div>
         <div ref={counter1Ref} className="counter1 digit">

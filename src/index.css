@@ -33,7 +33,7 @@
 }
 
 .title-shadow {
-  @apply font-headline absolute top-0.5 left-0 -z-[1] text-3xl font-semibold text-balance break-words text-black/75 md:text-4xl dark:hidden;
+  @apply font-headline absolute top-0.5 left-0 -z-[1] text-3xl font-semibold text-balance break-words text-black/75 md:text-4xl;
 }
 
 .subtitle {

@@ -31,19 +31,25 @@ const Hero = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: mainSectionRef.current,
-        start: 'top top',
-        end: '+=100%',
+        start: "top top",
+        end: "+=100%",
         scrub: 1,
         pin: true,
       },
     });
-  
-    tl.to(mainSectionRef.current, { y: '-100%' })
-      .to('.main', { opacity: 0 }, 0)
+
+    tl.to(mainSectionRef.current, { y: "-100%" }).to(
+      ".main",
+      { opacity: 0 },
+      0,
+    );
   }, []);
 
   return (
-    <main ref={mainSectionRef} className="flex items-center justify-center w-full main">
+    <main
+      ref={mainSectionRef}
+      className="main flex w-full items-center justify-center"
+    >
       <video
         autoPlay
         loop
