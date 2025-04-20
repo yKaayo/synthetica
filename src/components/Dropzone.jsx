@@ -49,7 +49,7 @@ const Dropzone = ({ onFileUpload }) => {
       className={`rounded-md border-2 border-dashed p-5 text-center transition-colors ${
         isDragging
           ? "border-blue-500 bg-blue-50"
-          : "border-gray-400 dark:border-white hover:border-gray-400"
+          : "border-gray-400 hover:border-gray-400 dark:border-white"
       }`}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
@@ -78,7 +78,7 @@ const Dropzone = ({ onFileUpload }) => {
             "Solte a imagem aqui"
           ) : (
             <>
-              <span className="text-primary font-medium">
+              <span className="text-primary font-medium me-1">
                 Clique para enviar
               </span>
               ou arraste e solte

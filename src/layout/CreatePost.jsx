@@ -2,6 +2,7 @@ import ModelViewer from "../components/ModelViewer";
 import { handleCreatePost } from "../lib/api";
 import { useGLTF } from "@react-three/drei";
 import { useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Model 3D
 import brainHologram from "../assets/3d/brain_hologram.glb";
@@ -56,6 +57,13 @@ const CreatePost = () => {
           <br />
           CONHECIMENTO PARA
           <br />O FUTURO
+          <br />
+          <span className="title-shadow">
+            TRAGA SEU
+            <br />
+            CONHECIMENTO PARA
+            <br />O FUTURO
+          </span>
         </h3>
       </TextBlurFade>
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { handleGetPosts, handleDeletePost } from "../lib/api";
 
 // Components
@@ -187,7 +187,7 @@ const Posts = () => {
         />
 
         <div className="absolute top-0 left-0 z-[2] h-[120px] w-full rounded-t-md bg-black/50 md:h-[200px]">
-          <h3 className="title absolute bottom-1 left-2">{post.title}</h3>
+          <h3 className="title absolute bottom-0 left-2 w-fit">{post.title}</h3>
         </div>
 
         <div className="relative mt-[76px] w-full flex-1 md:mt-[160px]">
@@ -230,7 +230,7 @@ const Posts = () => {
   }
 
   return (
-    <section className="section">
+    <section className="section posts">
       <BlurFade
         delay={0.2}
         duration={0.6}
@@ -260,7 +260,7 @@ const Posts = () => {
                 <div className="relative flex h-full w-full flex-col items-center justify-center">
                   <p className="absolute top-2 left-4 text-xs text-white">
                     Autor:{" "}
-                    <span className="text-primary font-sm">{post.author}</span>
+                    <span className="text-gradient font-sm">{post.author}</span>
                   </p>
 
                   <p className="absolute right-4 bottom-2 text-xs text-white">
