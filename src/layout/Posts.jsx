@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { handleGetPosts, handleDeletePost } from "../lib/api";
 
 // Components
 import TiltedCard from "../components/TiltedCard";
 import Modal from "../components/Modal";
+import BlurFade from "../components/BlurFade";
+import TextBlurFade from "../components/TextBlurFade";
 
 // Icon
 import editIcon from "../assets/icons/edit.svg";
 import trashIcon from "../assets/icons/trash.svg";
 import EditPostModal from "../components/EditPostModal";
-import { BlurFade } from "../components/BlurFade";
 
 const Posts = () => {
   // Posts
@@ -231,6 +232,32 @@ const Posts = () => {
 
   return (
     <section className="section posts">
+      <TextBlurFade duration={0.4} delay={0.4}>
+        <p className="paragraph mb-5">Em poucos passos</p>
+      </TextBlurFade>
+
+      <TextBlurFade duration={0.4}>
+        <h3 className="title text-center dark:text-white">
+          TRAGA SEU
+          <br />
+          CONHECIMENTO PARA
+          <br />O FUTURO
+          <br />
+          <span className="title-shadow">
+            TRAGA SEU
+            <br />
+            CONHECIMENTO PARA
+            <br />O FUTURO
+          </span>
+        </h3>
+      </TextBlurFade>
+
+      <TextBlurFade duration={0.4} delay={0.4}>
+        <p className="subtitle mt-3 text-center">
+          FAÇA PARTE DE UM MUNDO HIPERCONECTADO
+        </p>
+      </TextBlurFade>
+
       <BlurFade
         delay={0.2}
         duration={0.6}
