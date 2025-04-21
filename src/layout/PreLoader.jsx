@@ -26,14 +26,14 @@ const PreLoader = () => {
     animate(counter2Ref.current, 3, 0);
 
     gsap.to("body", {
-        overflowY: "hidden",
-        overflowX: "hidden",
-        duration: 4.2,
+      overflowY: "hidden",
+      overflowX: "hidden",
+      duration: 4.2,
     });
 
     gsap.to("body", {
-        overflowY: "visible",
-        delay: 4.2,
+      overflowY: "visible",
+      delay: 4.2,
     });
 
     gsap.to(".digit", {

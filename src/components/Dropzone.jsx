@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Dropzone = ({ onFileUpload }) => {
+const Dropzone = ({ onFileUpload, showPreview = true }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [preview, setPreview] = useState(null);
 
@@ -39,7 +39,7 @@ const Dropzone = ({ onFileUpload }) => {
     const reader = new FileReader();
     reader.onload = () => {
       setPreview(reader.result);
-      onFileUpload(file);
+      onFileUpload(file, reader.result);
     };
     reader.readAsDataURL(file);
   };
@@ -64,7 +64,7 @@ const Dropzone = ({ onFileUpload }) => {
         onChange={handleFileInput}
       />
 
-      {preview ? (
+      {preview && showPreview ? (
         <div className="mb-4">
           <img
             src={preview}
@@ -78,7 +78,7 @@ const Dropzone = ({ onFileUpload }) => {
             "Solte a imagem aqui"
           ) : (
             <>
-              <span className="text-primary font-medium me-1">
+              <span className="text-primary me-1 font-medium">
                 Clique para enviar
               </span>
               ou arraste e solte

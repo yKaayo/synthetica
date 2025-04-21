@@ -21,7 +21,7 @@
 }
 
 .section {
-  @apply relative container mx-auto flex min-h-screen flex-col items-center justify-center px-5 py-5 md:py-10 lg:px-0;
+  @apply relative container mx-auto flex min-h-screen flex-col items-center justify-center px-5 py-10 md:py-15 lg:px-0;
 }
 
 .text-gradient {
@@ -37,7 +37,7 @@
 }
 
 .subtitle {
-  @apply font-headline text-lg font-medium text-balance text-black/75 md:text-3xl dark:text-gray-200;
+  @apply font-headline text-lg font-medium text-balance text-black/75 italic md:text-3xl dark:text-gray-200;
 }
 
 .paragraph {

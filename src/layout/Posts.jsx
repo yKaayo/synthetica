@@ -188,7 +188,7 @@ const Posts = () => {
         />
 
         <div className="absolute top-0 left-0 z-[2] h-[120px] w-full rounded-t-md bg-black/50 md:h-[200px]">
-          <h3 className="title absolute bottom-0 left-2 w-fit">{post.title}</h3>
+          <h3 className="title absolute bottom-0 left-0 px-2 w-full break-words">{post.title}</h3>
         </div>
 
         <div className="relative mt-[76px] w-full flex-1 md:mt-[160px]">

@@ -29,10 +29,7 @@ export async function handleGetPosts() {
 export async function handleUpdatePost(id, formData) {
   const res = await fetch(`http://127.0.0.1:8000/post/${id}`, {
     method: "PUT",
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData)
+    body: formData,
   });
 
   if (!res.ok) {
