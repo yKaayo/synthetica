@@ -1,5 +1,9 @@
 import TextBlurFade from "../components/TextBlurFade";
 import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Video
 import iaVideo from "../assets/videos/ia.mp4";
@@ -8,6 +12,25 @@ const Hero = () => {
   const [blurPx, setBlurPx] = useState(60);
 
   const mainSectionRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: mainSectionRef.current,
+        start: "top top",
+        end: "+=100%",
+        scrub: 1,
+        pin: true,
+      },
+    });
+
+    tl.to(mainSectionRef.current, { y: "-120%" })
+      .to(".main", { opacity: 0 }, 0);
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
