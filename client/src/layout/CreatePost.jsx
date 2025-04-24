@@ -15,7 +15,8 @@ const CreatePost = () => {
   const { scene } = useGLTF(brainHologram);
 
   const [content, setContent] = useState("");
-  const [modal, setModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleUpload = (file) => {
@@ -30,18 +31,21 @@ const CreatePost = () => {
       formData.append("image", selectedImage);
     }
 
-    const res = await handleCreatePost(formData);
-
-    // Modal
-    const contentModal = (
-      <h3 className="text-center text-2xl font-bold text-balance">
-        {res.message}
-      </h3>
-    );
-    setContent(contentModal);
-    setModal(true);
-    e.target.reset();
-    setSelectedImage(null);
+    try {
+      await handleCreatePost(formData);
+      setIsSuccess(true);
+      setIsModalOpen(true);
+      e.target.reset();
+      setSelectedImage(null);
+    } catch {
+      setContent(
+        <h3 className="text-center text-2xl font-bold text-balance text-red-600">
+          Erro ao criar o produto
+        </h3>,
+      );
+      setIsSuccess(false);
+      setIsModalOpen(true);
+    }
   };
 
   return (
@@ -236,7 +240,13 @@ const CreatePost = () => {
         </form>
       </div>
 
-      {modal && <Modal isOpen={modal} content={content} setModal={setModal} />}
+      <Modal
+        isOpen={isModalOpen}
+        setModal={setIsModalOpen}
+        content={content}
+        showSuccess={isSuccess}
+        textSuccess="Post criado com sucesso!"
+      />
     </section>
   );
 };

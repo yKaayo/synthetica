@@ -7,7 +7,6 @@ import Dropzone from "./Dropzone";
 // Icon
 import checkIcon from "../assets/icons/check.svg";
 import pencilIcon from "../assets/icons/pencil.svg";
-import editIcon from "../assets/icons/edit.svg";
 
 const EditPostModal = ({ post, onSave, showPostEdited }) => {
   const [editedPost, setEditedPost] = useState(post);
@@ -75,16 +74,9 @@ const EditPostModal = ({ post, onSave, showPostEdited }) => {
             type="text"
             name="title"
             onChange={handleChange}
-            className="title w-full break-words focus-visible:outline-0"
+            className="title w-full rounded-md border border-gray-200 break-words focus-visible:outline-0"
             value={editedPost.title}
           />
-          <label htmlFor="" className="">
-            <img
-              src={pencilIcon}
-              alt="Editar o título"
-              className="bg-red-6 size-5"
-            />
-          </label>
         </div>
       </div>
 
@@ -108,12 +100,12 @@ const EditPostModal = ({ post, onSave, showPostEdited }) => {
           onChange={handleChange}
           type="text"
           name="description"
-          className="font-headline mt-2 w-full pe-12 text-lg font-medium text-balance break-words text-black/75 focus-visible:outline-0 md:text-3xl"
+          className="font-headline border border-gray-500 rounded-md mt-2 w-[calc(100%-44px)] text-lg font-medium text-balance break-words text-black/75 focus-visible:outline-0 md:text-3xl mb-2"
           value={editedPost.description}
         />
 
         <textarea
-          className="h-full w-full flex-1 resize-none text-start text-black/75 focus-visible:outline-0 md:text-2xl"
+          className="h-full w-full border border-gray-500 rounded-md flex-1 resize-none text-start text-black/75 focus-visible:outline-0 md:text-2xl"
           name="content"
           onChange={handleChange}
           value={editedPost.content}

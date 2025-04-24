@@ -97,7 +97,7 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <div className="from-primary/35 absolute top-0 left-0 h-full w-full rounded-2xl bg-gradient-to-br to-transparent blur-xl"></div>
+        <div className="from-primary/40 absolute top-0 left-0 h-full w-full rounded-2xl bg-gradient-to-br to-transparent blur-xl"></div>
         <div className="absolute top-0 left-0 z-[1] h-full w-full rounded-[15px] bg-black/40 dark:bg-black/30"></div>
         <motion.img
           src={imageSrc}

@@ -6,11 +6,11 @@ import TiltedCard from "../components/TiltedCard";
 import Modal from "../components/Modal";
 import BlurFade from "../components/BlurFade";
 import TextBlurFade from "../components/TextBlurFade";
+import EditPostModal from "../components/EditPostModal";
 
 // Icon
 import editIcon from "../assets/icons/edit.svg";
 import trashIcon from "../assets/icons/trash.svg";
-import EditPostModal from "../components/EditPostModal";
 
 const Posts = () => {
   // Posts
@@ -19,6 +19,7 @@ const Posts = () => {
   // Modal
   const [modal, setModal] = useState(false);
   const [content, setContent] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   async function fetchPosts() {
     const postsData = await handleGetPosts();
@@ -33,8 +34,20 @@ const Posts = () => {
     setContent(
       <EditPostModal
         post={post}
-        onSave={() => setModal(false)}
-        showPostEdited={() => fetchPosts()}
+        onSave={() => {
+          setModal(false);
+          setTimeout(() => {
+            setContent("");
+            setSuccessMessage("Post editado com sucesso!");
+            setModal(true);
+            fetchPosts();
+          }, 300);
+        }}
+        showPostEdited={() => {
+          setContent("");
+          setSuccessMessage("Post editado com sucesso!");
+          setModal(true);
+        }}
       />,
     );
 
@@ -43,35 +56,33 @@ const Posts = () => {
 
   function handleDelete(post) {
     async function handleDeleteConfirmed(id) {
-      const res = await handleDeletePost(id);
+      await handleDeletePost(id);
 
       setModal(false);
       fetchPosts();
 
-      // Showing to the user that the post was deleted
-      const contentModal = (
-        <h3 className="text-center text-2xl font-bold text-balance">
-          {res.message}
-        </h3>
-      );
-      setContent(contentModal);
+      // Mostra o modal com a animação de sucesso para deleção
+      setContent("");
+      setSuccessMessage("Post deletado com sucesso!");
       setModal(true);
     }
 
     function handleCancelDelete() {
       const contentModal = (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center overflow-y-auto">
           <img
             src={`http://127.0.0.1:8000${post.image_url}`}
             className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
             alt=""
           />
-
+  
           <div className="absolute top-0 left-0 z-[2] h-[120px] w-full rounded-t-md bg-black/50 md:h-[200px]">
-            <h3 className="title absolute bottom-1 left-2">{post.title}</h3>
+            <h3 className="title absolute bottom-0 left-0 w-full px-2 break-words">
+              {post.title}
+            </h3>
           </div>
-
-          <div className="relative mt-[76px] min-h-[calc(90vh-208px)] w-full overflow-y-auto md:mt-[160px] md:min-h-[calc(90vh-288px)]">
+  
+          <div className="relative mt-[76px] w-full flex-1 md:mt-[160px]">
             <div className="absolute top-2 right-1 flex items-center gap-2">
               <button
                 onClick={() => handleEdit(post)}
@@ -83,7 +94,7 @@ const Posts = () => {
                   alt="Editar"
                 />
               </button>
-
+  
               <button
                 onClick={() => handleDelete(post)}
                 className="relative cursor-pointer"
@@ -95,8 +106,8 @@ const Posts = () => {
                 />
               </button>
             </div>
-
-            <p className="font-headline mt-2 text-lg font-medium text-balance break-words text-black/75 md:text-3xl">
+  
+            <p className="font-headline my-2 pe-[74px] text-lg font-medium text-black/75 md:text-3xl">
               {post.description}
             </p>
             <p className="text-start break-words text-black/75 md:text-2xl">
@@ -188,7 +199,9 @@ const Posts = () => {
         />
 
         <div className="absolute top-0 left-0 z-[2] h-[120px] w-full rounded-t-md bg-black/50 md:h-[200px]">
-          <h3 className="title absolute bottom-0 left-0 px-2 w-full break-words">{post.title}</h3>
+          <h3 className="title absolute bottom-0 left-0 w-full px-2 break-words">
+            {post.title}
+          </h3>
         </div>
 
         <div className="relative mt-[76px] w-full flex-1 md:mt-[160px]">
@@ -216,7 +229,7 @@ const Posts = () => {
             </button>
           </div>
 
-          <p className="font-headline my-2 text-lg font-medium text-balance break-words text-black/75 md:text-3xl">
+          <p className="font-headline my-2 pe-[74px] text-lg font-medium text-black/75 md:text-3xl">
             {post.description}
           </p>
           <p className="text-start break-words text-black/75 md:text-2xl">
@@ -297,11 +310,13 @@ const Posts = () => {
                     </span>
                   </p>
 
-                  <h3 className="font-headline text-primary w-full text-2xl font-semibold text-balance break-words uppercase md:text-4xl">
+                  <h3 className="font-headline text-primary w-full text-2xl font-semibold text-balance break-words uppercase md:text-3xl">
                     {post.title}
                   </h3>
 
-                  <p className="mb-1 text-white">{post.description}</p>
+                  <p className="mb-1 text-balance text-white">
+                    {post.description}
+                  </p>
                 </div>
               }
             />
@@ -309,7 +324,13 @@ const Posts = () => {
         ))}
       </BlurFade>
 
-      {modal && <Modal isOpen={modal} content={content} setModal={setModal} />}
+      <Modal
+        isOpen={modal}
+        setModal={setModal}
+        content={content}
+        showSuccess={!content}
+        textSuccess={successMessage}
+      />
     </section>
   );
 };

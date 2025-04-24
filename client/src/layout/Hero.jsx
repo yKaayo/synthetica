@@ -24,7 +24,7 @@ const Hero = () => {
       },
     });
 
-    tl.to(mainSectionRef.current, { y: "-120%" })
+    tl.to(mainSectionRef.current, { y: "-110%" })
       .to(".main", { opacity: 0 }, 0);
 
     return () => {

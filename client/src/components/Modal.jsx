@@ -1,9 +1,16 @@
 import { useEffect } from "react";
+import DoneAnim from "./DoneAnim";
 
 // Icon
 import closeIcon from "../assets/icons/close.svg";
 
-const Modal = ({ isOpen, setModal, content }) => {
+const Modal = ({
+  isOpen,
+  setModal,
+  content,
+  showSuccess = false,
+  textSuccess = "",
+}) => {
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", isOpen);
     return () => document.body.classList.remove("overflow-hidden");
@@ -20,7 +27,7 @@ const Modal = ({ isOpen, setModal, content }) => {
       <div className="relative z-[1] flex max-h-[90vh] w-3/4 max-w-[720px] min-w-[300px] flex-col rounded-md bg-white p-3">
         <button
           onClick={handleModalClose}
-          className="relative ms-auto z-[5] cursor-pointer"
+          className="relative z-[5] ms-auto cursor-pointer"
         >
           <img
             src={closeIcon}
@@ -29,7 +36,14 @@ const Modal = ({ isOpen, setModal, content }) => {
           />
         </button>
 
-        {content}
+        {showSuccess ? (
+          <div className="text-center">
+            <DoneAnim className="size-20" />
+            <h2 className="text-xl font-semibold">{textSuccess}</h2>
+          </div>
+        ) : (
+          content
+        )}
 
         <button onClick={handleModalClose} className="btn z-[1] mt-5">
           Fechar
