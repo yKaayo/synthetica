@@ -62,6 +62,7 @@ const Dropzone = ({ onFileUpload, showPreview = true }) => {
         className="hidden"
         accept="image/*"
         onChange={handleFileInput}
+        required
       />
 
       {preview && showPreview ? (

@@ -65,17 +65,15 @@ async def create_post(
     author: str = Form(...),
     content: str = Form(...),
     category: str = Form(...),
-    image: Optional[UploadFile] = File(None)
+    image: UploadFile = File(...)
 ):
 
-    image_url = None
-    if image:
-        file_ext = image.filename.split(".")[-1]
-        filename = f"{uuid.uuid4()}.{file_ext}"
-        filepath = os.path.join(UPLOAD_DIR, filename)
+    file_ext = image.filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{file_ext}"
+    filepath = os.path.join(UPLOAD_DIR, filename)
         
-        with open(filepath, "wb") as buffer:
-            buffer.write(await image.read())
+    with open(filepath, "wb") as buffer:
+        buffer.write(await image.read())
         
         image_url = f"/uploads/{filename}"
 

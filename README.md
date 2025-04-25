@@ -96,15 +96,6 @@ synthetica/
 - Categorização de posts
 - Interface responsiva e moderna
 
-## 🔒 Variáveis de Ambiente
-
-O projeto utiliza as seguintes variáveis de ambiente:
-
-```env
-# Backend
-UPLOAD_DIR=uploads
-```
-
 ## 🤝 Contribuição
 
 1. Faça um fork do projeto
