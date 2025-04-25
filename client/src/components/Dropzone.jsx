@@ -83,8 +83,6 @@ const Dropzone = ({ onFileUpload, showPreview = true }) => {
                 Clique para enviar
               </span>
               ou arraste e solte
-              <br />
-              PNG ou JPG (máx. 5MB)
             </>
           )}
         </p>

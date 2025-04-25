@@ -14,7 +14,6 @@ import TextBlurFade from "../components/TextBlurFade";
 const CreatePost = () => {
   const { scene } = useGLTF(brainHologram);
 
-  const [content, setContent] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -31,21 +30,11 @@ const CreatePost = () => {
       formData.append("image", selectedImage);
     }
 
-    try {
-      await handleCreatePost(formData);
-      setIsSuccess(true);
-      setIsModalOpen(true);
-      e.target.reset();
-      setSelectedImage(null);
-    } catch {
-      setContent(
-        <h3 className="text-center text-2xl font-bold text-balance text-red-600">
-          Erro ao criar o produto
-        </h3>,
-      );
-      setIsSuccess(false);
-      setIsModalOpen(true);
-    }
+    await handleCreatePost(formData);
+    setIsSuccess(true);
+    setIsModalOpen(true);
+    e.target.reset();
+    setSelectedImage(null);
   };
 
   return (
@@ -78,7 +67,7 @@ const CreatePost = () => {
 
       {/* Form */}
       <div className="mt-20 grid w-full grid-cols-1 items-start justify-center md:mt-40 md:grid-cols-2">
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center h-full">
           <ModelViewer scene={scene} />
         </div>
 
@@ -243,7 +232,6 @@ const CreatePost = () => {
       <Modal
         isOpen={isModalOpen}
         setModal={setIsModalOpen}
-        content={content}
         showSuccess={isSuccess}
         textSuccess="Post criado com sucesso!"
       />

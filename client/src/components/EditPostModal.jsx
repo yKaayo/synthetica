@@ -6,7 +6,6 @@ import Dropzone from "./Dropzone";
 
 // Icon
 import checkIcon from "../assets/icons/check.svg";
-import pencilIcon from "../assets/icons/pencil.svg";
 
 const EditPostModal = ({ post, onSave, showPostEdited }) => {
   const [editedPost, setEditedPost] = useState(post);

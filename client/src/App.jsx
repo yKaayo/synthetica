@@ -4,6 +4,7 @@ import CreatePost from "./layout/CreatePost";
 import Posts from "./layout/Posts";
 import Hero from "./layout/Hero";
 import PreLoader from "./layout/PreLoader";
+import Faq from "./layout/Faq";
 
 const App = () => {
   useEffect(() => {
@@ -17,11 +18,12 @@ const App = () => {
 
   return (
     <>
-      <PreLoader />
+      {/* <PreLoader /> */}
       <Background />
       <Hero />
       <Posts />
       <CreatePost />
+      <Faq />
     </>
   );
 };

@@ -19,43 +19,59 @@ const ModelViewer = ({ scene }) => {
   useEffect(() => {
     if (!isModelReady) return;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        modelRef.current.rotation,
-        {
-          y: Math.PI,
-        },
-        {
-          y: Math.PI * 2,
-          position: "fixed",
-          scrollTrigger: {
-            trigger: "#formPost",
-            start: "top center",
-            end: "bottom center",
-            scrub: true,
-          },
-          ease: "none",
-        },
-      );
-
-      gsap.to(modelDivRef.current, {
-        position: "fixed",
+    gsap.fromTo(
+      modelRef.current.rotation,
+      {
+        y: Math.PI,
+      },
+      {
+        y: Math.PI * 2,
         scrollTrigger: {
           trigger: "#formPost",
-          start: "top 30%",
-          end: "bottom center",
-          scrub: true
+          start: "top center",
+          end: "bottom bottom",
+          scrub: true,
         },
         ease: "none",
-      });
-    });
+      },
+    );
 
-    return () => ctx.revert();
+    gsap.to(modelDivRef.current, {
+      scrollTrigger: {
+        trigger: "#formPost",
+        start: "top 30%",
+        end: "bottom bottom",
+        scrub: true,
+        onEnter: () => {
+          gsap.set(modelDivRef.current, {
+            top: "30%",
+            position: "fixed",
+          });
+        },
+        onLeaveBack: () => {
+          gsap.set(modelDivRef.current, {
+            position: "absolute",
+            top: 0
+          });
+        },
+        onToggle: ({ isActive }) => {
+          if (!isActive) {
+            gsap.set(modelDivRef.current, { position: "relative" });
+          }
+        },
+        onEnterBack: () => {
+          gsap.set(modelDivRef.current, {
+            top: "30%",
+            position: "fixed",
+          });
+        }
+      },
+    });
   }, [isModelReady]);
 
   return (
     <div
-      className={`absolute top-[30%] h-[300px] bg-radial dark:bg-none ${window.innerWidth < 768 ? "from-black/40 to-transparent to-70% opacity-40" : "from-black/70 to-transparent to-70% opacity-100"}`}
+      className={`absolute top-0 h-[300px] bg-radial dark:bg-none ${window.innerWidth < 768 ? "from-black/40 to-transparent to-70% opacity-40" : "from-black/70 to-transparent to-70% opacity-100"}`}
       ref={modelDivRef}
     >
       <Canvas camera={{ position: [1, 1, 1], fov: 50 }}>

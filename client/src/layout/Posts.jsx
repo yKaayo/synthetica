@@ -75,13 +75,13 @@ const Posts = () => {
             className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
             alt=""
           />
-  
+
           <div className="absolute top-0 left-0 z-[2] h-[120px] w-full rounded-t-md bg-black/50 md:h-[200px]">
             <h3 className="title absolute bottom-0 left-0 w-full px-2 break-words">
               {post.title}
             </h3>
           </div>
-  
+
           <div className="relative mt-[76px] w-full flex-1 md:mt-[160px]">
             <div className="absolute top-2 right-1 flex items-center gap-2">
               <button
@@ -94,7 +94,7 @@ const Posts = () => {
                   alt="Editar"
                 />
               </button>
-  
+
               <button
                 onClick={() => handleDelete(post)}
                 className="relative cursor-pointer"
@@ -106,7 +106,7 @@ const Posts = () => {
                 />
               </button>
             </div>
-  
+
             <p className="font-headline my-2 pe-[74px] text-lg font-medium text-black/75 md:text-3xl">
               {post.description}
             </p>
@@ -235,6 +235,12 @@ const Posts = () => {
           <p className="text-start break-words text-black/75 md:text-2xl">
             {post.content}
           </p>
+
+          <img
+            className="mt-5 h-full w-full object-cover"
+            src={`http://127.0.0.1:8000${post.image_url}`}
+            alt=""
+          />
         </div>
       </div>
     );
@@ -308,14 +314,6 @@ const Posts = () => {
                     <span className="text-primary font-sm">
                       {post.category}
                     </span>
-                  </p>
-
-                  <h3 className="font-headline text-primary w-full text-2xl font-semibold text-balance break-words uppercase md:text-3xl">
-                    {post.title}
-                  </h3>
-
-                  <p className="mb-1 text-balance text-white">
-                    {post.description}
                   </p>
                 </div>
               }
