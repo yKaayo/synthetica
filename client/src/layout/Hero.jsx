@@ -24,8 +24,11 @@ const Hero = () => {
       },
     });
 
-    tl.to(mainSectionRef.current, { y: "-110%" })
-      .to(".main", { opacity: 0 }, 0);
+    tl.to(mainSectionRef.current, { y: "-110%" }).to(
+      ".main",
+      { opacity: 0 },
+      0,
+    );
 
     return () => {
       tl.kill();
@@ -53,7 +56,7 @@ const Hero = () => {
   return (
     <main
       ref={mainSectionRef}
-      className="main w-full items-center justify-center"
+      className="main flex w-full items-center justify-center"
     >
       <video
         autoPlay
@@ -73,7 +76,7 @@ const Hero = () => {
         className={`absolute top-0 left-0 z-[1] h-full w-full`}
       ></div>
 
-      <div className="section z-[3]">
+      <div className="relative z-[3] container mx-auto flex min-h-dvh flex-col items-center justify-center px-5 py-10 md:py-15 lg:px-0">
         <div className="me-auto mt-auto mb-10 flex w-full flex-col items-start text-start md:w-[60%]">
           <TextBlurFade duration={0.4} delay={4.8}>
             <p className="paragraph">

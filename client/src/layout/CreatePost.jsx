@@ -38,7 +38,7 @@ const CreatePost = () => {
   };
 
   return (
-    <section className="section">
+    <section id="createPost" className="section">
       <TextBlurFade duration={0.4} delay={0.4}>
         <p className="paragraph mb-5">O futuro está em suas mãos</p>
       </TextBlurFade>

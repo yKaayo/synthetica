@@ -11,12 +11,36 @@ const Faq = () => {
 
   const faqs = [
     {
-      question: "Existe a versão para aplicativo?",
-      answer: "abcdpjofsnlk",
+      question: "Existe uma versão para aplicativo?",
+      answer: (
+        <>
+          Claro! {""}
+          <a
+            href="https://snack.expo.dev/@ana_carolina_leite/-synthetica"
+            className="text-blue-400 underline"
+          >
+            Através desse link
+          </a>{" "}
+          {""}é possível acessar a versão de aplicativo
+        </>
+      ),
     },
     {
-      question: "hjgfkh",
-      answer: "fgdjh",
+      question: "Quem pode criar posts no site?",
+      answer: (
+        <>
+          Qualquer usuário! Basta{" "}
+          <a href="#createPost" className="text-blue-400 underline">
+            colocar as informações aqui
+          </a>
+          . Posts ofensivos ou com informações falsas serão removidos.
+        </>
+      ),
+    },
+    {
+      question: "É possível editar e deletar os posts?",
+      answer:
+        "No momento todos os usuários podem editar e deletar qualquer post",
     },
   ];
 

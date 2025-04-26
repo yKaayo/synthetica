@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <>
-      <PreLoader />
+      {/* <PreLoader /> */}
       <Background />
       <Hero />
       <Posts />
