@@ -8,6 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 // Video
 import iaVideo from "../assets/videos/ia.mp4";
 
+// Image
+import gradientImg from "../assets/images/gradient.svg";
+
 const Hero = () => {
   const [blurPx, setBlurPx] = useState(60);
 
@@ -58,6 +61,12 @@ const Hero = () => {
       ref={mainSectionRef}
       className="main flex w-full items-center justify-center"
     >
+      <img
+        src={gradientImg}
+        className="absolute right-36 w-[45%] blur-[82px] opacity-40"
+        alt="Gradiente em tons azúis"
+      />
+
       <video
         autoPlay
         loop

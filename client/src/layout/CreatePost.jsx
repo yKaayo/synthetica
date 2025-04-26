@@ -11,6 +11,9 @@ import Modal from "../components/Modal";
 import Dropzone from "../components/Dropzone";
 import TextBlurFade from "../components/TextBlurFade";
 
+// Image
+import gradientImg from "../assets/images/gradient.svg";
+
 const CreatePost = () => {
   const { scene } = useGLTF(brainHologram);
 
@@ -39,6 +42,12 @@ const CreatePost = () => {
 
   return (
     <section id="createPost" className="section">
+      <img
+        src={gradientImg}
+        className="absolute top-10 right-[5%] w-[40%] opacity-40 blur-[82px]"
+        alt="Gradiente em tons azúis"
+      />
+
       <TextBlurFade duration={0.4} delay={0.4}>
         <p className="paragraph mb-5">O futuro está em suas mãos</p>
       </TextBlurFade>
@@ -47,14 +56,15 @@ const CreatePost = () => {
         <h3 className="title text-center dark:text-white">
           TRAGA O SEU CONHECIMENTO <br /> PARA O FUTURO COM APENAS 7 PASSOS
           <span className="title-shadow">
-          TRAGA O SEU CONHECIMENTO <br /> PARA O FUTURO COM APENAS 7 PASSOS
+            TRAGA O SEU CONHECIMENTO <br /> PARA O FUTURO COM APENAS 7 PASSOS
           </span>
         </h3>
       </TextBlurFade>
 
       <TextBlurFade duration={0.4} delay={0.4}>
         <p className="subtitle mt-3 text-center">
-          FAÇA PARTE DO CONTEÚDO ESTRUTURADO ATUALIZADO E ALINHADO AS TENDÊNCIAS DO MERCADO
+          FAÇA PARTE DO CONTEÚDO ESTRUTURADO ATUALIZADO E ALINHADO AS TENDÊNCIAS
+          DO MERCADO
         </p>
       </TextBlurFade>
 

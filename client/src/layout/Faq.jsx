@@ -6,6 +6,9 @@ import TextBlurFade from "../components/TextBlurFade";
 // Icons
 import ArrowIcon from "../assets/icons/ArrowIcon";
 
+// Image
+import gradientImg from "../assets/images/gradient.svg";
+
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -46,6 +49,12 @@ const Faq = () => {
 
   return (
     <section className="section">
+      <img
+        src={gradientImg}
+        className="absolute left-0 top-10 w-[40%] opacity-40 blur-[82px]"
+        alt="Gradiente em tons azúis"
+      />
+
       <TextBlurFade duration={0.4} delay={0.4}>
         <p className="paragraph mb-5">Dúvidas que nos movem</p>
       </TextBlurFade>
@@ -70,7 +79,7 @@ const Faq = () => {
         </p>
       </TextBlurFade>
 
-      <div className="mx-auto mt-10 flex w-[90%] flex-col gap-5">
+      <div className="relative mx-auto mt-10 flex w-[90%] flex-col gap-5">
         {faqs.map((faq, index) => (
           <div
             key={index}
