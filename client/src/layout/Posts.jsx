@@ -252,28 +252,25 @@ const Posts = () => {
   return (
     <section className="section posts">
       <TextBlurFade duration={0.4} delay={0.4}>
-        <p className="paragraph mb-5">Em poucos passos</p>
+        <p className="paragraph mb-5">A evolução não pede permissão</p>
       </TextBlurFade>
 
       <TextBlurFade duration={0.4}>
         <h3 className="title text-center dark:text-white">
-          TRAGA SEU
+          QUEBRE OS LIMITES
           <br />
-          CONHECIMENTO PARA
-          <br />O FUTURO
-          <br />
+          DA LÓGICA HUMANA COM IA
           <span className="title-shadow">
-            TRAGA SEU
+            QUEBRE OS LIMITES
             <br />
-            CONHECIMENTO PARA
-            <br />O FUTURO
+            DA LÓGICA HUMANA COM IA
           </span>
         </h3>
       </TextBlurFade>
 
       <TextBlurFade duration={0.4} delay={0.4}>
         <p className="subtitle mt-3 text-center">
-          FAÇA PARTE DE UM MUNDO HIPERCONECTADO
+          A SINGULARIDADE ESTÁ MAIS PRÓXIMA DO QUE VOCÊ IMAGINA
         </p>
       </TextBlurFade>
 

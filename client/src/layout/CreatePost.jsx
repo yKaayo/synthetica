@@ -40,34 +40,27 @@ const CreatePost = () => {
   return (
     <section className="section">
       <TextBlurFade duration={0.4} delay={0.4}>
-        <p className="paragraph mb-5">Em poucos passos</p>
+        <p className="paragraph mb-5">O futuro está em suas mãos</p>
       </TextBlurFade>
 
       <TextBlurFade duration={0.4}>
         <h3 className="title text-center dark:text-white">
-          TRAGA SEU
-          <br />
-          CONHECIMENTO PARA
-          <br />O FUTURO
-          <br />
+          TRAGA O SEU CONHECIMENTO <br /> PARA O FUTURO COM APENAS 7 PASSOS
           <span className="title-shadow">
-            TRAGA SEU
-            <br />
-            CONHECIMENTO PARA
-            <br />O FUTURO
+          TRAGA O SEU CONHECIMENTO <br /> PARA O FUTURO COM APENAS 7 PASSOS
           </span>
         </h3>
       </TextBlurFade>
 
       <TextBlurFade duration={0.4} delay={0.4}>
         <p className="subtitle mt-3 text-center">
-          FAÇA PARTE DE UM MUNDO HIPERCONECTADO
+          FAÇA PARTE DO CONTEÚDO ESTRUTURADO ATUALIZADO E ALINHADO AS TENDÊNCIAS DO MERCADO
         </p>
       </TextBlurFade>
 
       {/* Form */}
-      <div className="mt-20 grid w-full grid-cols-1 items-start justify-center md:mt-40 md:grid-cols-2">
-        <div className="relative flex items-center justify-center h-full">
+      <div className="relative mt-20 grid w-full grid-cols-1 items-start justify-center md:mt-40 md:grid-cols-2">
+        <div className="absolute flex h-full w-full items-center justify-center md:relative md:w-auto">
           <ModelViewer scene={scene} />
         </div>
 

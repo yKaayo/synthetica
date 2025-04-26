@@ -28,7 +28,7 @@ const ModelViewer = ({ scene }) => {
         y: Math.PI * 2,
         scrollTrigger: {
           trigger: "#formPost",
-          start: "top center",
+          start: "top 30%",
           end: "bottom bottom",
           scrub: true,
         },
@@ -51,7 +51,7 @@ const ModelViewer = ({ scene }) => {
         onLeaveBack: () => {
           gsap.set(modelDivRef.current, {
             position: "absolute",
-            top: 0
+            top: 0,
           });
         },
         onToggle: ({ isActive }) => {
@@ -64,7 +64,7 @@ const ModelViewer = ({ scene }) => {
             top: "30%",
             position: "fixed",
           });
-        }
+        },
       },
     });
   }, [isModelReady]);
