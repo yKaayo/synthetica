@@ -29,7 +29,7 @@ const ModelViewer = ({ scene }) => {
         scrollTrigger: {
           trigger: "#formPost",
           start: "top 30%",
-          end: "bottom bottom",
+          end: "90% center",
           scrub: true,
         },
         ease: "none",
@@ -40,30 +40,58 @@ const ModelViewer = ({ scene }) => {
       scrollTrigger: {
         trigger: "#formPost",
         start: "top 30%",
-        end: "bottom bottom",
+        end: "90% center",
+        markers: true,
         scrub: true,
         onEnter: () => {
-          gsap.set(modelDivRef.current, {
-            top: "30%",
-            position: "fixed",
-          });
+          window.innerWidth < 768
+            ? gsap.set(modelDivRef.current, {
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                position: "fixed",
+              })
+            : gsap.set(modelDivRef.current, {
+                position: "fixed",
+                top: "50%",
+                transform: "translate(0%, -50%)",
+              });
         },
         onLeaveBack: () => {
-          gsap.set(modelDivRef.current, {
-            position: "absolute",
-            top: 0,
-          });
+          window.innerWidth < 768
+            ? gsap.set(modelDivRef.current, {
+                position: "absolute",
+                top: "0%",
+                left: "50%",
+                transform: "translate(-50%, 0%)",
+              })
+            : gsap.set(modelDivRef.current, {
+                position: "absolute",
+                top: "0%",
+                transform: "translate(0%, 0%)",
+              });
         },
         onToggle: ({ isActive }) => {
           if (!isActive) {
-            gsap.set(modelDivRef.current, { position: "relative" });
+            gsap.set(modelDivRef.current, {
+              position: "absolute",
+              top: "90%",
+            });
           }
         },
         onEnterBack: () => {
-          gsap.set(modelDivRef.current, {
-            top: "30%",
-            position: "fixed",
-          });
+          window.innerWidth < 768
+            ? gsap.set(modelDivRef.current, {
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                position: "fixed",
+              })
+            : gsap.set(modelDivRef.current, {
+                position: "fixed",
+                top: "50%",
+                transform: "translate(0%, -50%)",
+              });
         },
       },
     });
