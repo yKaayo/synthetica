@@ -51,7 +51,7 @@ const Faq = () => {
     <section className="section">
       <img
         src={gradientImg}
-        className="absolute left-0 top-10 w-[40%] opacity-40 blur-[82px]"
+        className="absolute left-0 top-10 w-[40%] opacity-30 blur-[88px]"
         alt="Gradiente em tons azúis"
       />
 

@@ -63,7 +63,7 @@ const Hero = () => {
     >
       <img
         src={gradientImg}
-        className="absolute right-36 w-[45%] blur-[82px] opacity-40"
+        className="absolute right-36 w-[45%] blur-[82px] opacity-30"
         alt="Gradiente em tons azúis"
       />
 

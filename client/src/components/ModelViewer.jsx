@@ -41,7 +41,6 @@ const ModelViewer = ({ scene }) => {
         trigger: "#formPost",
         start: "top 30%",
         end: "90% center",
-        markers: true,
         scrub: true,
         onEnter: () => {
           window.innerWidth < 768

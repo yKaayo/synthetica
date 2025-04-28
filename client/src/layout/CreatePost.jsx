@@ -44,7 +44,7 @@ const CreatePost = () => {
     <section id="createPost" className="section">
       <img
         src={gradientImg}
-        className="absolute top-10 right-[5%] w-[40%] opacity-40 blur-[82px]"
+        className="absolute top-10 right-[5%] w-[40%] opacity-30 blur-[88px]"
         alt="Gradiente em tons azúis"
       />
 
