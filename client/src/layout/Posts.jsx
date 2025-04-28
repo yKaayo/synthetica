@@ -8,11 +8,16 @@ import BlurFade from "../components/BlurFade";
 import TextBlurFade from "../components/TextBlurFade";
 import EditPostModal from "../components/EditPostModal";
 
+// Store
+import { usePostsStore } from "../store/postsStore";
+
 // Icon
 import editIcon from "../assets/icons/edit.svg";
 import trashIcon from "../assets/icons/trash.svg";
 
 const Posts = () => {
+  const shouldRefetchPosts = usePostsStore((state) => state.shouldRefetchPosts);
+
   // Posts
   const [posts, setPosts] = useState([]);
 
@@ -28,7 +33,7 @@ const Posts = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [shouldRefetchPosts]);
 
   function handleEdit(post) {
     setContent(

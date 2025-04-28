@@ -1,8 +1,15 @@
 import { useState } from "react";
 
-const Dropzone = ({ onFileUpload, showPreview = true }) => {
+const Dropzone = ({
+  onFileUpload,
+  showPreview = true,
+  preview: controlledPreview,
+}) => {
   const [isDragging, setIsDragging] = useState(false);
-  const [preview, setPreview] = useState(null);
+  const [localPreview, setLocalPreview] = useState(null);
+
+  const displayPreview =
+    controlledPreview !== undefined ? controlledPreview : localPreview;
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -38,8 +45,9 @@ const Dropzone = ({ onFileUpload, showPreview = true }) => {
   const handleFile = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setPreview(reader.result);
-      onFileUpload(file, reader.result);
+      const result = reader.result;
+      setLocalPreview(result);
+      onFileUpload(file, result);
     };
     reader.readAsDataURL(file);
   };
@@ -65,10 +73,10 @@ const Dropzone = ({ onFileUpload, showPreview = true }) => {
         required
       />
 
-      {preview && showPreview ? (
+      {displayPreview && showPreview ? (
         <div className="mb-4">
           <img
-            src={preview}
+            src={displayPreview}
             alt="Preview"
             className="mx-auto max-h-48 rounded-md"
           />
@@ -93,7 +101,7 @@ const Dropzone = ({ onFileUpload, showPreview = true }) => {
         onClick={() => document.getElementById("file-upload").click()}
         className="btn"
       >
-        {preview ? "Trocar imagem" : "Selecionar arquivo"}
+        {displayPreview ? "Trocar imagem" : "Selecionar arquivo"}
       </button>
     </div>
   );

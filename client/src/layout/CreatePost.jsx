@@ -11,6 +11,9 @@ import Modal from "../components/Modal";
 import Dropzone from "../components/Dropzone";
 import TextBlurFade from "../components/TextBlurFade";
 
+// Store
+import { usePostsStore } from "../store/postsStore";
+
 // Image
 import gradientImg from "../assets/images/gradient.svg";
 
@@ -21,8 +24,12 @@ const CreatePost = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleUpload = (file) => {
+  const triggerRefetch = usePostsStore((state) => state.triggerRefetch);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleUpload = (file, preview) => {
     setSelectedImage(file);
+    setImagePreview(preview);
   };
 
   const handleFormCreatePost = async (e) => {
@@ -38,6 +45,8 @@ const CreatePost = () => {
     setIsModalOpen(true);
     e.target.reset();
     setSelectedImage(null);
+    setImagePreview(null);
+    triggerRefetch();
   };
 
   return (
@@ -212,7 +221,7 @@ const CreatePost = () => {
               <div className="flex w-full flex-col">
                 <label className="subtitle mb-1">Imagem</label>
 
-                <Dropzone onFileUpload={handleUpload} />
+                <Dropzone onFileUpload={handleUpload} preview={imagePreview} />
               </div>
             </div>
           </div>
