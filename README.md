@@ -56,7 +56,7 @@ uvicorn main:app --reload
 
 1. Navegue até a pasta do frontend:
 ```bash
-cd frontend
+cd client
 ```
 
 2. Instale as dependências:
