@@ -73,7 +73,7 @@ npm run dev
 yarn dev
 ```
 
-## 📦 Estrutura do Projeto
+## 📦 Estrutura Principal do Projeto
 
 ```
 synthetica/
@@ -83,9 +83,10 @@ synthetica/
 │   └── uploads/           # Diretório de upload de imagens
 └── frontend/              # Frontend
     ├── src/
-    │   ├── components/    # Componentes Vue
-    │   ├── views/         # Páginas
-    │   └── App.vue        # Componente principal
+    │   ├── components/    # Componentes React
+    │   ├── layout/        # Páginas
+    │   ├── App.jsx        # Componente principal
+    │   └── index.css/     # Estilização
     └── package.json       # Dependências Node.js
 ```
 
