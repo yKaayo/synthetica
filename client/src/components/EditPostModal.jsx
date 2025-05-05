@@ -56,7 +56,7 @@ const EditPostModal = ({ post, onSave, showPostEdited }) => {
         />
       ) : (
         <img
-          src={`http://127.0.0.1:8000${post.image_url}`}
+          src={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
           className="absolute top-0 left-0 z-[0] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
           alt=""
         />
