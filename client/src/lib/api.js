@@ -2,7 +2,7 @@
 // Create Post
 export async function handleCreatePost(formData) {
   try {
-    const res = await fetch("https://synthetica-kaayo.up.railway.apppost", {
+    const res = await fetch("https://synthetica-kaayo.up.railway.app/post", {
       method: "POST",
       body: formData,
     });
@@ -40,7 +40,7 @@ export async function handleCreatePost(formData) {
 // ----------------
 // Get All Posts
 export async function handleGetPosts() {
-  const res = await fetch("https://synthetica-kaayo.up.railway.appposts");
+  const res = await fetch("https://synthetica-kaayo.up.railway.app/posts");
   return res.json();
 }
 
@@ -55,7 +55,7 @@ export async function handleGetPosts() {
 // ----------------
 // Update a Post
 export async function handleUpdatePost(id, formData) {
-  const res = await fetch(`https://synthetica-kaayo.up.railway.apppost/${id}`, {
+  const res = await fetch(`https://synthetica-kaayo.up.railway.app/post/${id}`, {
     method: "PUT",
     body: formData,
   });
@@ -91,7 +91,7 @@ export async function handleUpdatePost(id, formData) {
 // ----------------
 // Delete a Post
 export async function handleDeletePost(id) {
-  const res = await fetch(`https://synthetica-kaayo.up.railway.apppost/${id}`, {
+  const res = await fetch(`https://synthetica-kaayo.up.railway.app/post/${id}`, {
     method: "DELETE",
   });
 
