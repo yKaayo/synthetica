@@ -23,7 +23,6 @@ const Hero = () => {
         start: "top top",
         end: "+=100%",
         scrub: 1,
-        pin: true,
       },
     });
 
