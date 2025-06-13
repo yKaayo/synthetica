@@ -1,8 +1,8 @@
-// ----------------
-// Create Post
+const urlApi = 'https://synthetica-0vyr.onrender.com/'
+
 export async function handleCreatePost(formData) {
   try {
-    const res = await fetch("https://synthetica-kaayo.up.railway.app/post", {
+    const res = await fetch(`${urlApi}/post`, {
       method: "POST",
       body: formData,
     });
@@ -20,42 +20,13 @@ export async function handleCreatePost(formData) {
   }
 }
 
-// Os dados estão sendo pegos do form no CreatePost.jsx e são tratados no handleCreatePost()
-// const handleFormCreatePost = async (e) => {
-//   e.preventDefault();
-//   const formData = new FormData(e.target);
-
-//   if (selectedImage) {
-//     formData.append("image", selectedImage);
-//   }
-
-//   await handleCreatePost(formData);
-//   setIsSuccess(true);
-//   setIsModalOpen(true);
-//   e.target.reset();
-//   setSelectedImage(null);
-// }
-// ----------------
-
-// ----------------
-// Get All Posts
 export async function handleGetPosts() {
-  const res = await fetch("https://synthetica-kaayo.up.railway.app/posts");
+  const res = await fetch(`${urlApi}/posts`);
   return res.json();
 }
 
-// Os dados retornados da api são usados no Posts.jsx para renderizar os posts através dessa função junto ao useState
-// const [posts, setPosts] = useState([]);
-// async function fetchPosts() {
-//   const postsData = await handleGetPosts();
-//   setPosts(postsData);
-// }
-// ----------------
-
-// ----------------
-// Update a Post
 export async function handleUpdatePost(id, formData) {
-  const res = await fetch(`https://synthetica-kaayo.up.railway.app/post/${id}`, {
+  const res = await fetch(`${urlApi}/post/${id}`, {
     method: "PUT",
     body: formData,
   });
@@ -67,31 +38,8 @@ export async function handleUpdatePost(id, formData) {
   return await res.json();
 }
 
-// Para editar é chamado a função no EditPostModal.jsx
-// const handleSave = async () => {
-//   const formData = new FormData();
-
-//   formData.append("title", editedPost.title);
-//   formData.append("description", editedPost.description);
-//   formData.append("author", editedPost.author);
-//   formData.append("content", editedPost.content);
-//   formData.append("category", editedPost.category);
-
-//   if (selectedImage?.file) {
-//     formData.append("image", selectedImage.file);
-//   }
-
-//   await handleUpdatePost(post.id, formData);
-
-//   onSave();
-//   showPostEdited();
-// }
-// ----------------
-
-// ----------------
-// Delete a Post
 export async function handleDeletePost(id) {
-  const res = await fetch(`https://synthetica-kaayo.up.railway.app/post/${id}`, {
+  const res = await fetch(`${urlApi}/post/${id}`, {
     method: "DELETE",
   });
 
@@ -101,17 +49,3 @@ export async function handleDeletePost(id) {
 
   return res.json();
 }
-
-// Para deletar é chamado a função no Posts.jsx
-// async function handleDeleteConfirmed(id) {
-//   await handleDeletePost(id);
-
-//   setModal(false);
-//   fetchPosts();
-
-//   // Mostra o modal com a animação de sucesso para deleção
-//   setContent("");
-//   setSuccessMessage("Post deletado com sucesso!");
-//   setModal(true);
-// }
-// ----------------
