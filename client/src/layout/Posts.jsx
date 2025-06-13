@@ -76,7 +76,7 @@ const Posts = () => {
       const contentModal = (
         <div className="flex flex-col items-center overflow-y-auto">
           <img
-            src={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
+            src={`https://synthetica-0vyr.onrender.com${post.image_url}`}
             className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
             alt=""
           />

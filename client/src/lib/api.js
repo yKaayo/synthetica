@@ -1,4 +1,4 @@
-const urlApi = 'https://synthetica-0vyr.onrender.com'
+const urlApi = "https://synthetica-0vyr.onrender.com";
 
 export async function handleCreatePost(formData) {
   try {
@@ -22,7 +22,9 @@ export async function handleCreatePost(formData) {
 
 export async function handleGetPosts() {
   const res = await fetch(`${urlApi}/posts`);
-  return res.json();
+  const data = await res.json();
+
+  return data;
 }
 
 export async function handleUpdatePost(id, formData) {
@@ -32,7 +34,7 @@ export async function handleUpdatePost(id, formData) {
   });
 
   if (!res.ok) {
-    throw new Error('Erro ao atualizar post');
+    throw new Error("Erro ao atualizar post");
   }
 
   return await res.json();
