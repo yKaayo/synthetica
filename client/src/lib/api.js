@@ -1,4 +1,4 @@
-const urlApi = 'https://synthetica-0vyr.onrender.com/'
+const urlApi = 'https://synthetica-0vyr.onrender.com'
 
 export async function handleCreatePost(formData) {
   try {
