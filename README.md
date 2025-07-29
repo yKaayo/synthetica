@@ -34,6 +34,7 @@ cd synthetica
 
 2. Crie e ative um ambiente virtual Python:
 ```bash
+cd server
 python -m venv venv
 # Windows
 venv\Scripts\activate
@@ -43,7 +44,6 @@ source venv/bin/activate
 
 3. Instale as dependências do backend:
 ```bash
-cd server
 pip install -r requirements.txt
 ```
 
@@ -56,21 +56,17 @@ uvicorn main:app --reload
 
 1. Navegue até a pasta do frontend:
 ```bash
-cd client
+cd ../client
 ```
 
 2. Instale as dependências:
 ```bash
 npm install
-# ou
-yarn install
 ```
 
 3. Execute o servidor de desenvolvimento:
 ```bash
 npm run dev
-# ou
-yarn dev
 ```
 
 ## 📦 Estrutura Principal do Projeto
