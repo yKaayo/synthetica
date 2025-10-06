@@ -1,4 +1,4 @@
-const urlApi = "http://127.0.0.1:8000";
+const urlApi = "https://synthetica-kaayo.up.railway.app";
 
 export async function handleCreatePost(formData) {
   try {
