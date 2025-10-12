@@ -135,6 +135,11 @@ async def update_post(
     
     return {"message": "Post atualizado com sucesso", "post": post_to_update}
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 @app.delete("/post/{post_id}")
 def delete_post(post_id: int):
     post_index = next((i for i, p in enumerate(posts) if p["id"] == post_id), None)
