@@ -10,7 +10,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://synthetica-kaayo.vercel.app"],
     allow_methods=["*"],
     allow_headers=["*"]
 )
@@ -134,11 +134,6 @@ async def update_post(
     post_to_update["category"] = category
     
     return {"message": "Post atualizado com sucesso", "post": post_to_update}
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
-
 
 @app.delete("/post/{post_id}")
 def delete_post(post_id: int):

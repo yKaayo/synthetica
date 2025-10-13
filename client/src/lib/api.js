@@ -1,4 +1,4 @@
-const urlApi = "https://synthetica-kaayo.up.railway.app";
+const urlApi = "https://synthetica-0vyr.onrender.com";
 
 export async function handleCreatePost(formData) {
   try {

@@ -74,7 +74,7 @@ const Posts = () => {
       const contentModal = (
         <div className="flex flex-col items-center overflow-y-auto">
           <img
-            src={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
+            src={`https://synthetica-0vyr.onrender.com${post.image_url}`}
             className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
             alt=""
           />
@@ -126,7 +126,7 @@ const Posts = () => {
     const contentModal = (
       <div className="flex flex-col items-center">
         <img
-          src={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
+          src={`https://synthetica-0vyr.onrender.com${post.image_url}`}
           className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
           alt=""
         />
@@ -196,7 +196,7 @@ const Posts = () => {
     const contentModal = (
       <div className="flex flex-col items-center overflow-y-auto">
         <img
-          src={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
+          src={`https://synthetica-0vyr.onrender.com${post.image_url}`}
           className="absolute top-0 left-0 z-[1] h-[120px] w-full rounded-t-md object-cover md:h-[200px]"
           alt=""
         />
@@ -241,7 +241,7 @@ const Posts = () => {
 
           <img
             className="mt-5 h-full w-full object-cover"
-            src={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
+            src={`https://synthetica-0vyr.onrender.com${post.image_url}`}
             alt=""
           />
         </div>
@@ -292,7 +292,7 @@ const Posts = () => {
               onClick={() => handleModal(post)}
             >
               <TiltedCard
-                imageSrc={`https://synthetica-kaayo.up.railway.app${post.image_url}`}
+                imageSrc={`https://synthetica-0vyr.onrender.com${post.image_url}`}
                 altText={post.title}
                 containerHeight="300px"
                 containerWidth="100%"
